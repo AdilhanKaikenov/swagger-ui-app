@@ -18,25 +18,25 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/")
-    @ApiOperation("This method returns all the Persons in the database with their corresponding Hobbies")
+    @ApiOperation(value = "This method returns all the Persons in the database with their corresponding Hobbies", response = Iterable.class)
     public List<Person> findAll() {
         return personService.findAll();
     }
 
     @PostMapping("/")
-    @ApiOperation("This method can create a new Person and its hobbies if provided")
+    @ApiOperation(value = "This method can create a new Person and its hobbies if provided", response = Person.class)
     public Person create(@RequestBody Person person) {
         return personService.create(person);
     }
 
     @GetMapping("/{personId}")
-    @ApiOperation("This method can find a person with a given ID")
+    @ApiOperation(value = "This method can find a person with a given ID", response = Person.class)
     public Person findOne(@PathVariable("personId") Long personId) {
         return personService.findOne(personId);
     }
 
     @GetMapping("/find/{firstName}")
-    @ApiOperation("This method can find a list of persons by their first name")
+    @ApiOperation(value = "This method can find a list of persons by their first name", response = Iterable.class)
     public List<Person> findByFirstName(@PathVariable("firstName") String firstName) {
         return personService.findByFirstName(firstName);
     }

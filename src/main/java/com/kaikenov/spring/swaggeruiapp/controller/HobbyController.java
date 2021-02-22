@@ -20,19 +20,19 @@ public class HobbyController {
     private HobbyService hobbyService;
 
     @GetMapping("/")
-    @ApiOperation("This method returns all the hobbies in the database")
+    @ApiOperation(value = "This method returns all the hobbies in the database", response = Iterable.class)
     public List<Hobby> findAll() {
         return hobbyService.findAll();
     }
 
     @GetMapping("/{hobbyId}")
-    @ApiOperation("This method returns a hobby by a given ID")
+    @ApiOperation(value = "This method returns a hobby by a given ID", response = Hobby.class)
     public Hobby findOne(@PathVariable("hobbyId") Long hobbyId) {
         return hobbyService.findOne(hobbyId);
     }
 
     @PostMapping("/")
-    @ApiOperation("This method creates a new hobby in the database")
+    @ApiOperation(value = "This method creates a new hobby in the database", response = Hobby.class)
     public Hobby create(@RequestBody Hobby hobby) {
         return hobbyService.create(hobby);
     }
